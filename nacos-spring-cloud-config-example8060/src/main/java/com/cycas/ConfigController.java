@@ -22,4 +22,9 @@ public class ConfigController {
     public String test() {
         return useLocalCache;
     }
+
+    @RequestMapping("/mixed")
+    public String mixed() {
+        return useLocalCache;
+    }
 }
