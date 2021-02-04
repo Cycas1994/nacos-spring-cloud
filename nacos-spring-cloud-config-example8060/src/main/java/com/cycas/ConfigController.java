@@ -28,7 +28,7 @@ public class ConfigController {
         return useLocalCache;
     }
 
-    @RequestMapping("/hard")
+    @RequestMapping("/hardReset")
     public String hard() {
         return useLocalCache;
     }

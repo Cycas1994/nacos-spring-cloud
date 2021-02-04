@@ -10,4 +10,7 @@ public class NacosSpringCloudConfigExampleApplication {
         SpringApplication.run(NacosSpringCloudConfigExampleApplication.class, args);
     }
 
+    public String hard() {
+        return null;
+    }
 }
