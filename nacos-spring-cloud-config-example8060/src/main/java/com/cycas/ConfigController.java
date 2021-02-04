@@ -17,4 +17,9 @@ public class ConfigController {
     public String get() {
         return useLocalCache;
     }
+
+    @RequestMapping("/test")
+    public String test() {
+        return useLocalCache;
+    }
 }
