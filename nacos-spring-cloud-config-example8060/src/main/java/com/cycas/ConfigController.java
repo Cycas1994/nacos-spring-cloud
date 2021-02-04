@@ -27,4 +27,9 @@ public class ConfigController {
     public String mixed() {
         return useLocalCache;
     }
+
+    @RequestMapping("/hard")
+    public String hard() {
+        return useLocalCache;
+    }
 }
