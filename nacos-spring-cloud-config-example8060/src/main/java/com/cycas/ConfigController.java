@@ -18,8 +18,18 @@ public class ConfigController {
         return useLocalCache;
     }
 
-    @RequestMapping("/testDev20210204")
+    @RequestMapping("/testDevSoft")
     public String test() {
+        return useLocalCache;
+    }
+
+    @RequestMapping("/mixed")
+    public String mixed() {
+        return useLocalCache;
+    }
+
+    @RequestMapping("/hardReset")
+    public String hard() {
         return useLocalCache;
     }
 }
