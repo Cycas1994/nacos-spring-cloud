@@ -1,10 +1,8 @@
 package com.cycas.dao;
 
 import com.cycas.pojo.Order;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,22 +11,40 @@ public interface OrderDao {
     @Insert({
             "insert into order (",
             "id, user_id,",
-            "commodity_code, count,",
+            "product_id, count,",
             "money, status)",
             "values( ",
-            "#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR},",
-            "#{commodityCode,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER},",
-            "#{money,jdbcType=INTEGER}, 'N')",
+            "#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},",
+            "#{productId,jdbcType=BIGINT}, #{count,jdbcType=INTEGER},",
+            "#{money,jdbcType=DECIMAL}, 0)",
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(Order order);
 
+
     @Update({
             "update order set ",
-            "status = 'Y'",
+            "status = 1",
             "where id = #{id,jdbcType=INTEGER}"
     })
-    int updateStatus(Integer id);
+    int updateStatus(Long id);
+
+    @Select({
+            "select ",
+            "id, user_id, product_id, count, money,",
+            "status",
+            "from order_tbl ",
+            "where id = #{id,jdbcType=BIGINT} "
+    })
+    @Results({
+            @Result(column = "id", property = "id", jdbcType = JdbcType.BIGINT, id = true),
+            @Result(column = "user_id", property = "userId", jdbcType = JdbcType.BIGINT),
+            @Result(column = "product_id", property = "productId", jdbcType = JdbcType.BIGINT),
+            @Result(column = "count", property = "count", jdbcType = JdbcType.INTEGER),
+            @Result(column = "money", property = "money", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "status", property = "status", jdbcType = JdbcType.INTEGER),
+    })
+    Order selectByPrimaryKey(Long id);
 
 }

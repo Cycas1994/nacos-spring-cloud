@@ -5,50 +5,55 @@ public class Order {
     /**
      * id
      */
-    private Integer id;
+    private Long id;
 
     /**
-     * user_id
+     * 用户id
      */
-    private String userId;
+    private Long userId;
 
     /**
-     * commodity_code
+     * 产品id
      */
-    private String commodityCode;
+    private Long productId;
 
     /**
-     * count
+     * 数量
      */
     private Integer count;
 
     /**
-     * money
+     * 金额
      */
     private Integer money;
 
-    public Integer getId() {
+    /**
+     * 订单状态：0：创建中；1：已完结
+     */
+    private Integer status;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public String getCommodityCode() {
-        return commodityCode;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setCommodityCode(String commodityCode) {
-        this.commodityCode = commodityCode;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Integer getCount() {
@@ -65,5 +70,13 @@ public class Order {
 
     public void setMoney(Integer money) {
         this.money = money;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

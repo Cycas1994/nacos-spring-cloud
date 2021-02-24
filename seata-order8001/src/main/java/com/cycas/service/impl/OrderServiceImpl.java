@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     private AccountService accountService;
 
     @Override
-    @GlobalTransactional(name = "example-create-order", rollbackFor = Exception.class)
+    @GlobalTransactional(name = "fsp_tx_group", rollbackFor = Exception.class)
     public void create(Order order) {
 
         logger.info("--->开始新建订单");
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 2.扣减库存
         logger.info("--->订单为服务开始调用库存，做扣减Count");
-        storageService.decrease(order.getCommodityCode(), order.getCount());
+        storageService.decrease(order.getProductId(), order.getCount());
         logger.info("--->订单微服务调用库存结束");
 
         // 3.扣减账户
@@ -45,5 +45,11 @@ public class OrderServiceImpl implements OrderService {
         orderDao.updateStatus(order.getId());
 
 
+    }
+
+    @Override
+    public Order getOrderById(Long id) {
+
+        return orderDao.selectByPrimaryKey(id);
     }
 }
