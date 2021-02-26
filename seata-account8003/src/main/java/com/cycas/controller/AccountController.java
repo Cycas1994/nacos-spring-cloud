@@ -15,7 +15,7 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping("/account/decrease")
+    @RequestMapping("/decrease")
     public CommonResult decrease(@RequestParam("userId") Long userId, @RequestParam("money") Integer money) {
 
         accountService.decrease(userId, money);

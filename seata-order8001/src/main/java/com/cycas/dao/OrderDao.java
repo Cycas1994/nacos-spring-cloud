@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 public interface OrderDao {
 
     @Insert({
-            "insert into order (",
-            "id, user_id,",
+            "insert into order_tbl (",
+            "user_id,",
             "product_id, count,",
             "money, status)",
             "values( ",
-            "#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},",
+            "#{userId,jdbcType=BIGINT},",
             "#{productId,jdbcType=BIGINT}, #{count,jdbcType=INTEGER},",
             "#{money,jdbcType=DECIMAL}, 0)",
     })
@@ -24,11 +24,11 @@ public interface OrderDao {
 
 
     @Update({
-            "update order set ",
+            "update order_tbl set ",
             "status = 1",
             "where id = #{id,jdbcType=BIGINT}"
     })
-    int updateStatus(Long id);
+    int updateStatus(Integer id);
 
     @Select({
             "select ",

@@ -17,13 +17,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping("/getOrderById")
-    @ResponseBody
-    public Order getOrderById(@RequestParam("id") Long id) {
-
-        return orderService.getOrderById(id);
-    }
-
     @RequestMapping("/create")
     public CommonResult create(Order order) {
 

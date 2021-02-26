@@ -1,5 +1,6 @@
 package com.cycas.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.cycas.dao.OrderDao;
 import com.cycas.pojo.Order;
 import com.cycas.service.AccountService;
@@ -27,6 +28,7 @@ public class OrderServiceImpl implements OrderService {
     public void create(Order order) {
 
         logger.info("--->开始新建订单");
+        logger.info("order req:{}", JSON.toJSONString(order));
         // 1.新建订单
         orderDao.insert(order);
 
@@ -42,6 +44,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 4.修改订单状态
         logger.info("--->修改订单状态");
+        logger.info("orderId:{}", order.getId());
         orderDao.updateStatus(order.getId());
 
 
