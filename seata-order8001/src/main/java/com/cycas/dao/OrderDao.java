@@ -26,7 +26,7 @@ public interface OrderDao {
     @Update({
             "update order set ",
             "status = 1",
-            "where id = #{id,jdbcType=INTEGER}"
+            "where id = #{id,jdbcType=BIGINT}"
     })
     int updateStatus(Long id);
 
