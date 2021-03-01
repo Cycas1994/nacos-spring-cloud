@@ -7,7 +7,7 @@
         <artifactId>nacos-spring-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>kafka</artifactId>
+    <artifactId>kafka8999</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>kafka</name>
     <description>Demo project for Spring Boot</description>
@@ -22,6 +22,11 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
