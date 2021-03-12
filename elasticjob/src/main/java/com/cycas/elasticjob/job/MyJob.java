@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @Description:
  * @date 2020/10/2915:40
  */
-@ElasticSimpleJob(cron = "0 0/5 0 * * ?",
+@ElasticSimpleJob(cron = "0/30 0 0 * * ?",
         jobName = "firstJob",
         shardingTotalCount = 2,
         jobParameter = "测试参数",
