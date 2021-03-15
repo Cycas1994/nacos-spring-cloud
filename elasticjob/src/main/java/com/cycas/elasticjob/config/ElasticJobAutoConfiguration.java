@@ -26,10 +26,8 @@ import java.util.Map;
 @ConditionalOnExpression("'${elaticjob.zookeeper.server-list}'.length() > 0")
 public class ElasticJobAutoConfiguration {
 
-    @Value("${elaticjob.zookeeper.server-lists}")
-    private String serverList;
-    @Value("${elaticjob.zookeeper.namespace}")
-    private String namespace;
+    @Autowired
+    private ZookeeperRegistryCenter regCenter;
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -38,8 +36,6 @@ public class ElasticJobAutoConfiguration {
     @PostConstruct
     public void initElasticJob() {
 
-        ZookeeperRegistryCenter regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(this.serverList, this.namespace));
-        regCenter.init();
         Map<String, SimpleJob> map = this.applicationContext.getBeansOfType(SimpleJob.class);
         Iterator<Map.Entry<String, SimpleJob>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
