@@ -10,9 +10,13 @@
     </parent>
     <groupId>com.cycas</groupId>
     <artifactId>nacos-spring-cloud</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>nacos-spring-cloud</name>
     <description>Demo project for Spring Boot</description>
+    <modules>
+        <module>kafka8999</module>
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>
