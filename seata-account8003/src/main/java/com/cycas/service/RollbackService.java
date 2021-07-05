@@ -6,6 +6,5 @@ public interface RollbackService {
 
     void save();
 
-    void insert(Account account);
 
 }

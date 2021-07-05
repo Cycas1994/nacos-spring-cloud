@@ -19,7 +19,7 @@ public class ParseImageUrl {
 
         HttpURLConnection conn = null;
         try {
-            String pictureUrl = "https://probe.bjmantis.net/hcFile/2021/05/3401/png/下载_1620891889046.png";
+            String pictureUrl = "https://probe.bjmantis.net/hcFile/2021/05/7011/jpg/摄图网_500295648_企业文化（非企业商用）_1621674649565.jpg";
             String originalFilename = pictureUrl.substring(pictureUrl.lastIndexOf("/") + 1);
             logger.info("originalFilename:{}", originalFilename);
             String fileName = originalFilename.substring(0,originalFilename.lastIndexOf("."))+"_"+System.currentTimeMillis();
@@ -27,7 +27,8 @@ public class ParseImageUrl {
             if (StringUtils.isBlank(suffix)){
                 throw new RuntimeException("该文件后缀异常!");
             }
-            if (StringUtils.isBlank(suffix)) {
+            if (!"jpg".equals(suffix.toLowerCase()) && !"jpeg".equals(suffix.toLowerCase())
+                    && !"png".equals(suffix.toLowerCase()) && !"bmp".equals(suffix.toLowerCase())) {
                 throw new RuntimeException("图片格式不正确!");
             }
             URL url = new URL(pictureUrl);
